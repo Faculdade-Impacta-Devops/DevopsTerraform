@@ -48,7 +48,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "web" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t2.micro"
+  instance_type          = "t3.micro"
   vpc_security_group_ids = [aws_security_group.web-sg.id]
 
   user_data = <<-EOF
@@ -79,10 +79,12 @@ resource "aws_security_group" "web-sg" {
 }
 
 resource "aws_iam_user" "new_user" {
-  name = "Usuario_Impacta" # Nome do novo usuário
+
+  name = "Usuario_Impacta_AS08" # Nome do novo usuário
 
   tags = {
-    Name = "AS07"
+    Name = "AS08"
+
   }
 }
 
